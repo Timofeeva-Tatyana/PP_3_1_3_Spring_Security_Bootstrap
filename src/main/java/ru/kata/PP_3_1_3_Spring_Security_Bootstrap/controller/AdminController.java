@@ -71,6 +71,11 @@ public class AdminController {
 
     @DeleteMapping("/admin/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
+        User user = userService.findUserById(id);
+        if (user == null) {
+            throw new RuntimeException("There is no user with ID = " +
+                    id + " in Database");
+        }
         userService.deleteUser(id);
         return "redirect:/admin";
     }
