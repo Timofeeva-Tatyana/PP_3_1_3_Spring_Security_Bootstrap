@@ -24,13 +24,6 @@ public class AdminController {
         return "login";
     }
 
-    @GetMapping("/user")
-    public String userHomePage(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
-        return "user_panel";
-    }
-
     @GetMapping("/admin")
     public String getAllUsers(Model model) {
         User thisUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
